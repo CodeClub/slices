@@ -19,17 +19,6 @@ describe "When posting to a slice", type: :request do
     end
   end
 
-  context "on a page that doesn't have a slice to handle it" do
-    before do
-      StandardTree.build_virtual
-      post @parent.path, hello: 'world'
-    end
-
-    it "return a 500 status code" do
-      assert_response :error
-    end
-  end
-
   context "on page that has a slice that can handle it" do
     class DataHandlingSlice < Slice
       def handle_post(params)
@@ -56,4 +45,3 @@ describe "When posting to a slice", type: :request do
     end
   end
 end
-
