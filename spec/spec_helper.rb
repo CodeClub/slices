@@ -27,6 +27,7 @@ Capybara.default_driver = :rack_test
 Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
   config.mock_with :rspec
   config.order = 'random'
 
