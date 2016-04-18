@@ -3,7 +3,6 @@ class SlicesController < ActionController::Base
 
   protect_from_forgery
 
-  rescue_from Exception, with: :render_error
   rescue_from Page::NotFound, with: :render_not_found
 
   append_view_path(File.join(Rails.root, *%w[app slices]))
@@ -24,12 +23,6 @@ class SlicesController < ActionController::Base
   def render_not_found!(exception)
     logger.warn "404: #{request.path} :: #{request.params.inspect}"
     render_page(Page.find_virtual('not_found'), 404)
-  end
-
-  def render_error(exception)
-    raise exception if self.class.should_raise_exceptions?
-    logger.warn "500: #{request.path} :: #{request.params.inspect}"
-    render_page(Page.find_virtual('error'), 500)
   end
 
   private
@@ -60,4 +53,3 @@ class SlicesController < ActionController::Base
     page.layout
   end
 end
-
