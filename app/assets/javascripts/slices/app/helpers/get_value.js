@@ -6,19 +6,15 @@ slices.getValue = function(inp) {
   // If the input has a computed value assigned, return it.
   if (inp.data('computed-value')) {
     return inp.data('computed-value');
-
   // If the input is a special array type, return concatenated value.
   } else if (inp.data('type') === 'array') {
     return inp.val().split('||');
-
   // If the input is a checkbox, return true/false for checked/unchecked.
   } else if (inp.is(':checkbox')) {
     return inp.is(':checked');
-
   // If field contains a set of radio buttons, find checked and return value.
   } else if (inp.is(':has(:radio)')) {
     return inp.find(':checked').val();
-
   // Otherwise, this is simple input and we just take its value normally.
   } else {
     return inp.val();

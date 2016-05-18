@@ -102,4 +102,3 @@ class Admin::PagesController < Admin::AdminController
       Slices::AvailableSlices.all
     end
 end
-

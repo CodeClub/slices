@@ -100,7 +100,7 @@ module Slices
     def _attachment_asset_ids
       attachment_asset_ids = self.class.attachment_fields.collect do |attachments|
         [send(attachments)].flatten.collect do |attachment|
-          attachment.asset_id
+          attachment.asset_id if attachment.present?
         end.reject {|i| i.nil? }
       end.flat_map {|i| i }
     end
@@ -108,4 +108,3 @@ module Slices
   end
 
 end
-
