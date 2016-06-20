@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     :action => /(slices|sites)/
   }, :as => :static_assets
 
-  match ':status.html' => 'pages#virtual_error_pages'
   match '*path' => 'pages#create', :via => :post
   match '*path' => 'pages#show', :as => :page, :constraints => PageConstraints.new
 

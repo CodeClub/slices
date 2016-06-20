@@ -10,19 +10,19 @@ class SlicesController < ActionController::Base
   define_callbacks :render_page, terminator: "response_body"
 
   def self.should_raise_exceptions?
-    ! Rails.env.production?
+    !Rails.env.production?
   end
 
   protected
 
   def render_not_found(exception)
     raise exception if self.class.should_raise_exceptions?
-    render_not_found!(exception)
+    render_not_found!
   end
 
-  def render_not_found!(exception)
+  def render_not_found!
     logger.warn "404: #{request.path} :: #{request.params.inspect}"
-    render_page(Page.find_virtual('not_found'), 404)
+    render :file => 'public/404.html', :status => :not_found, :layout => false
   end
 
   private
