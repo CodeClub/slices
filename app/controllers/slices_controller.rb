@@ -15,8 +15,7 @@ class SlicesController < ActionController::Base
 
   protected
 
-  def render_not_found(exception)
-    raise exception if self.class.should_raise_exceptions?
+  def render_not_found
     render_not_found!
   end
 
