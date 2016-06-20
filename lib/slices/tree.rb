@@ -60,13 +60,14 @@ module Slices
         find_by_path('/')
       end
 
-      # Finds a page by it's path, a {Page::NotFound} is raised if the page
-      # can't be found.
+      # Finds a page by its path
       #
       # @return [Page]
       #
       def find_by_path(path)
-        first(conditions: { path: path }) || (raise Page::NotFound.new(path))
+        first(conditions: {
+          :path => path
+        })
       end
       alias :f :find_by_path
 
