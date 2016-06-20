@@ -19,7 +19,7 @@ group :test do
 end
 
 group :assets do
-  gem 'jquery-rails' , '~> 2.1.4'
-  gem 'sass-rails'   , '~> 3.2.5'
+  gem 'jquery-rails' , '~> 2.2.0'
+  gem 'sass-rails'   , '~> 3.2.6'
   gem 'uglifier'     , '~> 1.3.0'
 end

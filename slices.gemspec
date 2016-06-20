@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid'           , '~> 2.5.1'
   s.add_dependency 'mongoid-paperclip' , '~> 0.0.8'
   s.add_dependency 'paperclip'         , '~> 3.1.4'
-  s.add_dependency 'rails'             , '~> 3.2.18'
+  s.add_dependency 'rails'             , '~> 3.2.22.2'
   s.add_dependency 'redcarpet'         , '~> 3.0.0'
   s.add_dependency 'RedCloth'          , '~> 4.2.9'
   s.add_dependency 'stringex'          , '~> 1.4.0'
