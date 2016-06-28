@@ -53,14 +53,9 @@ module PagesHelper
   #
   # @return [String]                      Edit in CMS link
   #
-  def edit_in_cms
+  def edit_in_cms(classes = nil)
     if admin_signed_in?
-      links = []
-      links << link_to("Edit #{@page.class.to_s.underscore.humanize} in CMS", admin_page_path(@page), target: '_blank')
-      links << link_to('Edit template in CMS', admin_page_path(@page.parent, entries: 1), target: '_blank') if @page.entry?
-      content = links.collect {|l| content_tag(:p, l) }.join.html_safe
-
-      content_tag(:div, content, id: 'edit_in_cms')
+      link_to("Edit Page in CMS", admin_page_path(@page), :class => classes, :id => 'edit-in-cms', :target => '_blank')
     end
   end
 
@@ -116,4 +111,3 @@ _gaq.push(#{analytics_que});
     Rails.env.production? && ! admin_signed_in?
   end
 end
-
