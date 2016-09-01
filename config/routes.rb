@@ -31,9 +31,4 @@ Rails.application.routes.draw do
     :asset_type => /(stylesheets|javascripts|images)/,
     :action => /(slices|sites)/
   }, :as => :static_assets
-
-  match '*path' => 'pages#create', :via => :post
-  match '*path' => 'pages#show', :as => :page, :constraints => PageConstraints.new
-
-  root :to => 'pages#show'
 end
