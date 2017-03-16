@@ -23,12 +23,10 @@ module NavigationHelper
   # @return [String]
   #
   def primary_navigation(id = 'primary_navigation')
-    cache 'page/navigation/' + id + '/' + @page.id.to_s do
-      benchmark 'Rendered primary_navigation' do
-        nav = navigation(page: Page.home, depth: 1, id: id)
-        safe_concat nav
-        ''
-      end
+    benchmark 'Rendered primary_navigation' do
+      nav = navigation(page: Page.home, depth: 1, id: id)
+      safe_concat nav
+      ''
     end
   end
 
@@ -52,18 +50,16 @@ module NavigationHelper
   # @return [String]
   #
   def secondary_navigation(options = {})
-    cache 'page/navigation/secondary/' + @page.id.to_s do
-      benchmark 'Rendered secondary_navigation' do
-        secondary_ancestors = (@page.ancestors[-2] || @page).navigable_children
-        nav = if secondary_ancestors.empty? || @page.home?
-                ''
-              else
-                page = secondary_ancestors.first
-                navigation(options.reverse_merge(page: page, id: 'secondary_navigation'))
-              end
-        safe_concat nav
-        ''
-      end
+    benchmark 'Rendered secondary_navigation' do
+      secondary_ancestors = (@page.ancestors[-2] || @page).navigable_children
+      nav = if secondary_ancestors.empty? || @page.home?
+              ''
+            else
+              page = secondary_ancestors.first
+              navigation(options.reverse_merge(page: page, id: 'secondary_navigation'))
+            end
+      safe_concat nav
+      ''
     end
   end
 
